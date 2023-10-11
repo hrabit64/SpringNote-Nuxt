@@ -1,0 +1,46 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.body {
+    font-family: 'IBM Plex Sans KR', sans-serif !important;
+}
+
+.nanumsquare-bold {
+    font-family: 'NanumSquare', sans-serif !important;
+    font-weight: 800;
+}
+
+.nanumsquare-normal {
+    font-family: 'NanumSquare', sans-serif !important;
+    font-weight: 500;
+}
+
+.nanumsquare-light {
+    font-family: 'NanumSquare', sans-serif !important;
+    font-weight: 300;
+}
+
+.gmarket-sans-light {
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'NanumSquare', sans-serif !important;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.gmarket-sans-medium {
+    font-family: 'GmarketSansMedium', sans-serif !important;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.gmarket-sans-bold {
+    font-family: 'GmarketSansMedium', sans-serif !important;
+    font-weight: 800;
+    font-style: normal;
+}
