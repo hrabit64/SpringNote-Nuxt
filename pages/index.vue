@@ -1,84 +1,47 @@
 <template>
-  <v-container class="h-100 fluid d-flex" v-motion-slide-left>
-    <v-row class="align-center justify-center mt-10">
-      <!--      title start-->
-      <v-col cols="4">
-        <v-sheet width="100%" height="100%" class="bg-transparent py-xl-15 px-xl-10 py-lg-10 px-lg-4">
-          <v-card-item>
-            <v-row>
-              <v-col cols="12" class="align-end mt-15">
-                <h1 class="text-xl-h1 text-lg-h2 text-md-h5 gmarket-sans-bold text-left text-primary mb-2">Spring</h1>
-                <h1 class="text-xl-h1 text-lg-h2 text-md-h4 gmarket-sans-bold text-left mb-1">NOTE</h1>
-                <p class="text-xl-subtitle-1 text-lg-subtitle-2 gmarket-sans-light text-left">Spring을 주로 다루는 개발
-                  블로그입니다.</p>
-                <v-divider class="my-2"></v-divider>
-                <v-btn class="my-2 mx-2 rounded-xl" icon href="https://github.com/hrabit64">
-                  <v-icon>mdi-github</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col cols="12" class="text-left">
-                <v-img src="/image/title.png" max-width="400" max-height="400"></v-img>
-              </v-col>
-            </v-row>
-          </v-card-item>
-        </v-sheet>
-      </v-col>
-      <!--      title end-->
-      <v-divider vertical></v-divider>
-      <!--      recent note start-->
-      <v-col cols="8" class="pl-10 pt-10 align-content-start">
-        <v-row>
-          <v-col cols="12">
-            <v-divider></v-divider>
-            <v-chip size="x-large" class="mb-5" color="primary" variant="elevated">최신 포스트</v-chip>
-            <PostCard type="large" :title="recentPost.title" :thumbnail="recentPost.thumbnail"></PostCard>
+    <span class="bg"></span>
+    <v-container class="fill-height fluid d-flex" v-motion-slide-bottom>
 
-          </v-col>
+      <v-row class="align-content-center justify-center text-center">
+        <v-col cols="8">
+          <v-divider></v-divider>
+          <h1 class="gmarket-sans-bold text-lg-h1 text-primary d-inline">Spring</h1>
+          <h1 class="gmarket-sans-bold text-lg-h1 d-inline"> Note</h1>
+          <v-divider></v-divider>
+          <h2 class="gmarket-sans-medium text-subtitle-1 ma-2">&nbsp</h2>
+          <v-divider></v-divider>
+          <h2 class="nanumsquare-normal text-subtitle-1 ma-2">스프링 백엔드 개발자를 꿈꾸는 학생의 작은 노트입니다.</h2>
+          <v-divider></v-divider>
+          <h2 class="gmarket-sans-medium text-subtitle-1 ma-2 text-primary">#Spring Boot&nbsp#Backend&nbsp#MSA</h2>
+          <v-divider class="mb-10"></v-divider>
 
-          <v-col cols="12">
-            <v-divider></v-divider>
-            <v-chip size="x-large" class="mb-5" color="primary" variant="elevated">추천 포스트</v-chip>
-            <v-row>
-              <v-col cols="6">
-                <PostCard></PostCard>
-              </v-col>
-              <v-divider vertical></v-divider>
-              <v-col cols="6">
-                <PostCard></PostCard>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
+          <v-btn append-icon="mdi-arrow-right-bold" class="rounded-xl" size="x-large" @click.stop="goPage('/posts')" ><p class="nanumsquare-normal">전체 글 보기</p></v-btn>
 
-      </v-col>
-      <!--      recent note end -->
-      <v-col cols="12">
-        <v-divider></v-divider>
-      </v-col>
-    </v-row>
+        </v-col>
+      </v-row>
 
-  </v-container>
+    </v-container>
 </template>
 
 <script setup lang="ts">
-//모바일
-import {useDisplay} from 'vuetify'
-import {getAllPost} from "~/api/post";
-
-const {mobile} = useDisplay()
-
-
-const recentPost = await getAllPost(1).then(res => {
-  if (res != null && res.items.length > 0) {
-    return res.items[0]
-  } else {
-    return null
-  }
-})
-
-
+const router = useRouter();
+const goPage = (target:string) => {
+  router.push({path: target})
+}
 </script>
 
 <style scoped>
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url( '/image/title3.jpg') no-repeat center center;
+  background-size: cover;
+  background-color: black;
+  transform: scale(1.1);
+  z-index: -1;
+}
 </style>
 

@@ -1,7 +1,7 @@
 
 
 <template>
-  <v-app-bar :elevation="1" color="" fixed app class="justify-center align-content-end px-5 nanumsquare-bold py-2">
+  <v-app-bar :elevation="0" fixed app class="justify-center align-content-end px-5 nanumsquare-bold py-2" color="#121212">
     <!--      title-->
     <v-img
         class="mx-2"
@@ -17,10 +17,9 @@
     <!--      menu  start-->
 
     <v-tabs
-        bg-color="transparent"
         v-model="activeTab"
     >
-      <v-tab value="0" @click.stop="goPage('/')"><v-icon class="mr-2">mdi-home</v-icon> 메인 페이지 </v-tab>
+      <v-tab value="0" @click.stop="goPage('/')"><v-icon class="mr-2">mdi-home</v-icon> 홈 </v-tab>
       <v-tab value="1" @click.stop="goPage('/posts')"><v-icon class="mr-2">mdi-note-multiple</v-icon> 전체 글 </v-tab>
       <v-tab value="2"><v-icon class="mr-2">mdi-tag-multiple</v-icon> 전체 시리즈 </v-tab>
       <v-tab value="3"><v-icon class="mr-2">mdi-information</v-icon> ABOUT </v-tab>
@@ -38,7 +37,7 @@
     </v-btn>
 
     <v-btn small icon class="mx-2">
-      <v-icon color="primary" @click="goToGithub()">mdi-login</v-icon>
+      <v-icon color="primary" @click.stop="goPage('/login')">mdi-login</v-icon>
       <v-tooltip
           activator="parent"
           location="bottom"
@@ -63,6 +62,9 @@ const goToGithub = () => {
 const activeTab = ref(0);
 const route = useRoute();
 const router = useRouter();
+
+
+
 if (route.path === '/') {
   activeTab.value = 0;
 } else if (route.path === '/posts') {

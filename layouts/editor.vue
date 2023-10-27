@@ -1,6 +1,5 @@
 <template>
   <v-app dark>
-    <NavBar></NavBar>
     <v-layout>
       <v-main>
         <slot />

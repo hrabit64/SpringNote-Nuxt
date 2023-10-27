@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar :elevation="0" fixed app class="justify-center align-content-end nanumsquare-bold" height="48">
+  <v-app-bar :elevation="0" color="#121212" fixed app class="justify-center align-content-end nanumsquare-bold" height="48">
     <!--      title-->
     <v-img
         class="mx-2"
