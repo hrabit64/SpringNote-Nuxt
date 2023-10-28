@@ -16,8 +16,8 @@ RUN yarn install --production=false
 
 COPY --link . .
 
-RUN npm run build
-RUN npm prune
+RUN yarn run build
+RUN yarn prune
 
 # Run
 FROM base
