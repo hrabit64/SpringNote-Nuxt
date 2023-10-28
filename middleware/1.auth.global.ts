@@ -1,5 +1,3 @@
-import { useUserStore, UserStore } from '~/store/user';
-import {User} from "@firebase/auth";
 import {getUser} from "~/api/user";
 import {
 	getCurrentUser,
