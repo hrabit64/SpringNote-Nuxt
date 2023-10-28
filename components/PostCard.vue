@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-lg" elevation="3" color="grey-darken-4" >
+  <v-card class="rounded-lg bg-transparent" elevation="0" >
     <v-card-title>
       <v-img src="https://cdn.pixabay.com/photo/2023/09/16/17/13/cat-8257177_1280.jpg" cover class="rounded-lg elevation-3" max-height="200" max-weight="200">
       </v-img>
@@ -7,19 +7,32 @@
     <v-card-text>
       <v-row class="pa-2 my-2">
         <v-col cols="12">
-          <p class="nanumsquare-bold"><v-icon>mdi-calendar-range</v-icon> 2023.03.02</p>
+          <p class="nanumsquare-bold"><v-icon>mdi-calendar-range</v-icon> {{ (props.createAt) ? props.createAt.slice(0,10) : "알 수 없음"}}</p>
         </v-col>
         <v-divider></v-divider>
         <v-col cols="12">
-          <v-btn variant="text" class="ma-0 pa-0">
-            <h1 class="text-subtitle-2 nanumsquare-bold text-info">시리즈 | {{ cutString("Spring Boot 블로그 개발 프로젝트 2131 123123 123 12",40) }}</h1>
-          </v-btn>
+          <v-hover>
+            <NuxtLink
+                class="text-left text-subtitle-1 nanumsquare-bold  text-info overflow-x-hidden"
+                href="http://localhost:8080"
+                style="text-decoration-line:none"
+                :to="'/series/'+props.seriesId"
+            >
+              시리즈 | {{ props.series }}
+            </NuxtLink>
+          </v-hover>
+
         </v-col>
         <v-divider></v-divider>
-        <v-col cols="12" >
-          <v-btn variant="text" class="ma-0 pa-0">
-            <h1 class="text-subtitle-1 nanumsquare-bold text-white">{{ cutString("Spring Boot + ZMQ로 MSA 시스템 연동을 해보자 1 11",40) }}</h1>
-          </v-btn>
+        <v-col cols="12">
+          <NuxtLink class="text-left text-subtitle-1 nanumsquare-bold text-white overflow-x-hidden"
+             href="http://localhost:8080"
+             style="text-decoration:none"
+                    :to="'/view/'+props.postId"
+          >
+
+            {{ props.title }}
+          </NuxtLink>
         </v-col>
         <v-divider></v-divider>
       </v-row>
@@ -61,12 +74,10 @@ const props = defineProps({
     type: Number,
     required: true
   },
-  type: {
+  createAt:{
     type: String,
-    required: false,
-    default: 'default'
-  },
-
+    required: true
+  }
 })
 
 const url = ref('/view/' + props.postId)

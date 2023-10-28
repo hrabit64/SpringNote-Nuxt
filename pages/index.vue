@@ -8,7 +8,7 @@
           <h1 class="gmarket-sans-bold text-lg-h1 text-primary d-inline">Spring</h1>
           <h1 class="gmarket-sans-bold text-lg-h1 d-inline"> Note</h1>
           <v-divider></v-divider>
-          <h2 class="gmarket-sans-medium text-subtitle-1 ma-2">&nbsp</h2>
+          <h2 class="nanumsquare-normal text-subtitle-1 ma-2">* beta test 중. 아직 미완성입니다.</h2>
           <v-divider></v-divider>
           <h2 class="nanumsquare-normal text-subtitle-1 ma-2">스프링 백엔드 개발자를 꿈꾸는 학생의 작은 노트입니다.</h2>
           <v-divider></v-divider>

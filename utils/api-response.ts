@@ -23,8 +23,14 @@ export interface PageInfo {
 }
 
 export interface PostPageResponse {
-    post_items : PostResponse[];
+    _embedded: {
+        post_items : PostResponse[];
+    }
     page: PageInfo;
+    _links: {
+        next: string | undefined;
+        last: string | undefined;
+    }
 }
 
 export interface UserResponse {

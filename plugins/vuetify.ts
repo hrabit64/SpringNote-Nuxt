@@ -9,7 +9,7 @@ import { mdi } from "vuetify/iconsets/mdi";
 import "@mdi/font/css/materialdesignicons.css"; // Ensure you are using css-loader
 import "@fortawesome/fontawesome-free/css/all.css";
 import { md1 } from 'vuetify/blueprints'
-
+import { VInfiniteScroll } from 'vuetify/labs/VInfiniteScroll'
 export default defineNuxtPlugin((nuxtApp) => {
 	const Vuetify = createVuetify({
 		blueprint: md1,

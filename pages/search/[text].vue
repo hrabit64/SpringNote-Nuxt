@@ -1,17 +1,30 @@
 <template>
   <span class="bg"></span>
     <v-container class="h-100" v-motion-slide-left>
+      <v-row class="mt-15">
+        <v-spacer></v-spacer>
+        <v-col cols="10">
+          <v-card class="rounded-xl" width="100%">
+            <v-card-title class="my-10">
+              <h1 class="text-center text-primary nanumsquare-bold">검색결과 | {{searchText}}</h1>
+            </v-card-title>
+          </v-card>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
       <v-row>
         <v-spacer></v-spacer>
         <v-col cols="10">
           <client-only>
 
           <v-card class="rounded-lg elevation-3 mt-10">
-
+            <v-col v-if="!isLoading && empty" class="text-center nanumsquare-bold">
+              검색결과가 없습니다.
+            </v-col>
             <v-card-item>
               <v-row class="align-center justify-center mt-10">
                   <v-col lg="8" md="8" sm="12">
-                    <v-row v-if="!isLoading">
+                    <v-row v-if="!isLoading && !empty">
                       <v-col cols="12">
                         <v-infinite-scroll  :items="posts"  :onLoad="load">
                           <template v-for="(item, index) in posts" :key="item.postId" >
@@ -71,7 +84,7 @@
 </template>
 
 <script setup>
-import {getAllPost} from "~/api/post";
+import {getAllPost, getAllPostWithSearch} from "~/api/post";
 import { VInfiniteScroll } from 'vuetify/labs/VInfiniteScroll'
 import axios from "axios";
 const isLoading = ref(true)
@@ -82,13 +95,26 @@ const posts = ref([])
 let nextUrl = null
 let isEnd = false
 
+const route = useRoute();
+const searchText = route.params.text
+let empty = false;
+
+
 const initPost = async () => {
-  const data = await getAllPost(8)
+  const data = await getAllPostWithSearch(8,searchText)
   if(data === null) {
     raiseError.value = true
     errorMsg.value = '포스트를 불러오는데 실패했습니다.'
     isLoading.value = false
+    empty = true;
+
   } else {
+
+    if(data.page.totalElements === 0){
+      empty = true;
+      isLoading.value = false
+      return
+    }
     data._embedded.post_items.forEach((item) => {
       posts.value.push({
         postId: item.id,

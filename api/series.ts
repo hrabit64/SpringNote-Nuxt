@@ -13,3 +13,15 @@ export const getAllSeries = async (): Promise<SeriesPageResponse| null> => {
         return data.value
     }
 }
+
+export const getSeries = async (id:number): Promise<SeriesResponse| null> => {
+    const url = '/api/v1/series/'+id;
+    const {data, pending, error, refresh} = await useFetch<SeriesResponse>(
+        createUrl(url)
+    )
+    if (error.value) {
+        return null
+    } else {
+        return data.value
+    }
+}
