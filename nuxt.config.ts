@@ -34,7 +34,9 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            BASE_URL: process.env.BASE_URL
+            //깃헙 표시용 깃헙 주소
+            BASE_URL: process.env.BASE_URL,
+            selfGitHubUrl: process.env.SELF_GITHUB_URL,
         }
     },
 
