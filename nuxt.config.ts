@@ -7,12 +7,15 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
-    nitro: {
-        preset: 'firebase'
+    app: {
+        head: {
+            title: '스프링노트'
+        }
     },
     vuefire: {
         auth: {
-            enabled: true
+            enabled: true,
+            sessionCookie: false
         },
         config: {
             apiKey: process.env.CLIENT_FIREBASE_API_KEY,
