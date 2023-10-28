@@ -60,9 +60,9 @@
         <v-col cols="12" class="mx-2 my-2">
           <v-spacer></v-spacer>
           <v-snackbar color="primary"
-                      v-model="raiseError "
+                      v-model="raiseError"
                       :timeout="10000"
-                      v-if="raiseError "
+                      v-if="raiseError"
                       multi-line
           >
             {{ errorMsg }}

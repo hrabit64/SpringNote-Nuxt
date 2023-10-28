@@ -20,7 +20,7 @@
               :multiple="false"
               accept="image/*"
               variant="filled"
-              v-model="img"
+              v-model="iamgeFile"
               prepend-icon="mdi-camera"
           ></v-file-input>
         </v-col>
@@ -44,9 +44,9 @@
         <v-col cols="12" class="mx-2 my-2">
           <v-spacer></v-spacer>
           <v-snackbar color="primary"
-                      v-model="raiseError "
+                      v-model="raiseError"
                       :timeout="10000"
-                      v-if="raiseError "
+                      v-if="raiseError"
                       multi-line
           >
             {{ errorMsg }}
@@ -76,7 +76,7 @@ definePageMeta({
   requiresAuth: true,
   layout: 'editor',
 })
-const img = ref(null);
+const iamgeFile = ref(null);
 const imgURL = ref('');
 const isUploading = ref(false);
 const imgUrls = ref([]);
@@ -90,14 +90,14 @@ const upload = async () => {
 
   const formData = new FormData();
 
-  if (img.value === null || img.value === '') {
+  if (iamgeFile.value === null || iamgeFile.value === '') {
     raiseError.value = true;
     errorMsg.value = '이미지를 선택해주세요.'
     isUploading.value = false;
     return;
   }
 
-  formData.append('file', img.value[0]);
+  formData.append('file', iamgeFile.value[0]);
 
 
   const res = await uploadImage(formData);

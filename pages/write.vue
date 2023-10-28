@@ -26,16 +26,16 @@
           <v-text-field label="썸네일 URL" v-model="thumbnail"></v-text-field>
         </v-col>
         <v-col cols="12">
-          <v-file-input show-size accept=".md" label="마크다운 파일" v-model="file" :multiple="false"></v-file-input>
+          <v-file-input show-size accept=".md" label="마크다운 파일" v-model="uploadedFile" :multiple="false"></v-file-input>
         </v-col>
       </v-row>
       <v-row>
         <v-col cols="12" class="mx-2 my-2">
           <v-spacer></v-spacer>
           <v-snackbar color="primary"
-                      v-model="raiseError "
+                      v-model="raiseError"
                       :timeout="10000"
-                      v-if="raiseError "
+                      v-if="raiseError"
                       multi-line
           >
             {{ errorMsg }}
@@ -67,7 +67,7 @@ definePageMeta({
 const series = ref(null);
 const title = ref(null);
 const thumbnail = ref(null);
-const file = ref(null);
+const uploadedFile = ref(null);
 const errorMsg = ref('');
 const raiseError = ref(false);
 const isUploading = ref(false);
@@ -98,7 +98,7 @@ const upload = async () => {
     return;
   }
 
-  if(file.value === null){
+  if(uploadedFile.value === null){
     raiseError.value = true;
     errorMsg.value = '마크다운 파일을 입력해주세요.'
     isUploading.value = false;
@@ -108,7 +108,7 @@ const upload = async () => {
   formData.append('title', title.value);
   formData.append('seriesName', series.value);
   formData.append('thumbnail', thumbnail.value);
-  formData.append('markdownFile', file.value[0]);
+  formData.append('markdownFile', uploadedFile.value[0]);
 
   const data = await uploadPost(formData).then((res) => {
     if(typeof res === 'string'){

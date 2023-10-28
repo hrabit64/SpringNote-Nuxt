@@ -36,9 +36,9 @@
       </v-card-title>
       <p class="text-center my-4">*검색어를 2글자 이상 12자이하로 입력해주세요.</p>
       <v-snackbar color="primary"
-                  v-model="raiseError "
+                  v-model="raiseError"
                   :timeout="10000"
-                  v-if="raiseError "
+                  v-if="raiseError"
                   multi-line
       >
         {{ errorMsg }}
