@@ -2,7 +2,7 @@
   "name": "springnote",
   "private": true,
   "scripts": {
-    "build": "NITRO_PRESET=firebase nuxt build --dotenv .env.production",
+    "build": "nuxt build --dotenv .env.production",
     "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
