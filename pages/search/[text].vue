@@ -6,7 +6,7 @@
         <v-col cols="10">
           <v-card class="rounded-xl" width="100%">
             <v-card-title class="my-10">
-              <h1 class="text-center text-primary nanumsquare-bold">검색결과 | {{searchText}}</h1>
+              <p class="text-h3 text-center text-primary nanumsquare-bold">검색결과 | {{searchText}}</p>
             </v-card-title>
           </v-card>
         </v-col>

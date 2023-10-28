@@ -6,11 +6,11 @@
       <v-col cols="10">
         <v-card class="rounded-xl" width="100%">
           <v-card-title class="my-10">
-            <h1 class="text-center text-primary nanumsquare-bold">시리즈 | {{series.title}}</h1>
+            <p class="text-h3 text-center text-primary nanumsquare-bold">시리즈 | {{series.title}}</p>
           </v-card-title>
           <v-divider></v-divider>
           <v-card-subtitle class="my-10">
-            <h2 class="text-center text-subtitle-1 nanumsquare-bold">{{series.description}}</h2>
+            <p class="text-center text-subtitle-1 nanumsquare-bold">{{series.description}}</p>
           </v-card-subtitle>
         </v-card>
       </v-col>

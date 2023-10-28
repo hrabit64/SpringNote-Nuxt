@@ -8,7 +8,7 @@
       </v-row>
       <v-row v-if="!isUploading" class="align-content-center justify-center text-center">
         <v-col cols="12">
-          <h1>{{ post.title }}({{ postId }})를 정말로 삭제하시겠습니까?</h1>
+          <p class="text-h3">{{ post.title }}({{ postId }})를 정말로 삭제하시겠습니까?</p>
         </v-col>
 
         <v-spacer></v-spacer>
