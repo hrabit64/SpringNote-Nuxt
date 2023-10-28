@@ -1,21 +1,37 @@
-# Nuxt 3 builder
-FROM node:lts as builder
+# use node 16 alpine image as build image
+FROM node:18-alpine as builder
+
+# create work directory in app folder
+WORKDIR /app
+
+# install required packages for node image
+RUN apk --no-cache add openssh g++ make python3 git
+
+# copy over package.json files
+COPY package.json /app/
+COPY package-lock.json /app/
+
+# install all depencies
+RUN npm ci && npm cache clean --force
+
+# copy over all files to the work directory
+ADD . /app
+
+# build the project
+RUN npm run build
+
+# start final image
+FROM node:18-alpine
+
 
 WORKDIR /app
 
-COPY . .
+# copy over build files from builder step
+COPY --from=builder /app  /app
 
-RUN yarn run build
+# expose the host and port 3000 to the server
+ENV HOST 0.0.0.0
+EXPOSE 3000
 
-# Nuxt 3 production
-FROM node:lts
-
-WORKDIR /app
-
-COPY --from=builder /app/.output  /app/.output
-
-ENV NITRO_PORT=80
-
-EXPOSE 80
-
-CMD [ "node", ".output/server/index.mjs" ]
+# run the build project with node
+ENTRYPOINT ["node", ".output/server/index.mjs"]
