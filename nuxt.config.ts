@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
+
 export default defineNuxtConfig({
     // modules: ['@pinia/nuxt','nuxt-vuefire'],
     modules: ['@pinia/nuxt','@vueuse/motion/nuxt','nuxt-vuefire'],
@@ -39,6 +40,14 @@ export default defineNuxtConfig({
             selfGitHubUrl: process.env.SELF_GITHUB_URL,
         }
     },
-
+    routeRules: {
+        '/': { isr: true },
+        '/write': { ssr: false },
+        '/search': { ssr: false },
+        '/series': { ssr: false },
+        '/login': { ssr: false },
+        '/posts': { ssr: false },
+        '/image': { ssr: false },
+    },
 
 });
