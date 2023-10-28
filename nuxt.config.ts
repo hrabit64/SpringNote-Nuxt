@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
+    nitro: {
+        preset: 'firebase'
+    },
     vuefire: {
         auth: {
             enabled: true
