@@ -6,7 +6,8 @@
     "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "build:firebase": "NITRO_PRESET=firebase nuxt build --dotenv .env.production"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
