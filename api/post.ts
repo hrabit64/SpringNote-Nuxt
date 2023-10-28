@@ -62,3 +62,25 @@ export const uploadPost = async (form:FormData): Promise<PostResponse| string> =
         return data.value
     }
 }
+
+
+export const deletePost = async (id:number): Promise<PostResponse| string> => {
+    const url = '/api/v1/post/'+id;
+    const user = await getCurrentUser()
+    const token = await user.getIdToken()
+
+    const {data, pending, error, refresh} = await useFetch<PostResponse>(
+        createUrl(url),
+        {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+        }
+    )
+    if (error.value) {
+        return error.value.message
+    } else {
+        return data.value
+    }
+}

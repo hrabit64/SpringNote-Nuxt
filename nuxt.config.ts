@@ -49,6 +49,7 @@ export default defineNuxtConfig({
         '/login': { ssr: false },
         '/posts': { ssr: false },
         '/image': { ssr: false },
+        '/delete': { ssr: false },
     },
 
 });

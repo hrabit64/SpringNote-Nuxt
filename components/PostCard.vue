@@ -1,7 +1,7 @@
 <template>
   <v-card class="rounded-lg bg-transparent" elevation="0" >
     <v-card-title>
-      <v-img src="https://cdn.pixabay.com/photo/2023/09/16/17/13/cat-8257177_1280.jpg" cover class="rounded-lg elevation-3" max-height="200" max-weight="200">
+      <v-img :src="props.thumbnail" cover class="rounded-lg elevation-3" max-height="200" max-weight="200">
       </v-img>
     </v-card-title>
     <v-card-text>
