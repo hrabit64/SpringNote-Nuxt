@@ -1,37 +1,35 @@
-# use node 16 alpine image as build image
-FROM node:18-alpine as builder
+FROM node:18-alpine3.17 as build
 
-# create work directory in app folder
+# update and install the latest dependencies for the alpine version
+RUN apk update && apk upgrade
+
+# set work dir as app
 WORKDIR /app
+# copy the nuxt project package json and package json lock if available
+COPY package* ./
+# install all the project npm dependencies
+RUN  yarn install
+# copy all other project files to working directory
+COPY . ./
+# build the nuxt project to generate the artifacts in .output directory
+RUN yarn nuxt build
 
-# install required packages for node image
-RUN apk --no-cache add openssh g++ make python3 git
+# we are using multi stage build process to keep the image size as small as possible
+FROM node:18-alpine3.17
+# update and install latest dependencies, add dumb-init package
+# add a non root user
+RUN adduser -D nuxtuser
+# set non root user
+USER nuxtuser
 
-# copy over package.json files
-COPY package.json /app/
-COPY package-lock.json /app/
-
-# install all depencies
-RUN npm ci && npm cache clean --force
-
-# copy over all files to the work directory
-ADD . /app
-
-# build the project
-RUN npm run build
-
-# start final image
-FROM node:18-alpine
-
-
+# set work dir as app
 WORKDIR /app
+# copy the output directory to the /app directory from
+# build stage with proper permissions for user nuxt user
+COPY --chown=nuxtuser:nuxtuser --from=build /app/.output ./
+# expose 8080 on container
+EXPOSE 8080
 
-# copy over build files from builder step
-COPY --from=builder /app  /app
 
-# expose the host and port 3000 to the server
-ENV HOST 0.0.0.0
-EXPOSE 3000
-
-# run the build project with node
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+ENV HOST=0.0.0.0 PORT=8080 NODE_ENV=production
+CMD ["node","/app/server/index.mjs"]
