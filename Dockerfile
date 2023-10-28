@@ -18,7 +18,7 @@ RUN yarn nuxt build
 FROM node:18-alpine3.17
 # update and install latest dependencies, add dumb-init package
 # add a non root user
-RUN adduser -D nuxtuser
+RUN apk update && && adduser -D nuxtuser
 # set non root user
 USER nuxtuser
 
@@ -30,6 +30,6 @@ COPY --chown=nuxtuser:nuxtuser --from=build /app/.output ./
 # expose 8080 on container
 EXPOSE 8080
 
-
 ENV HOST=0.0.0.0 PORT=8080 NODE_ENV=production
+
 CMD ["node","/app/server/index.mjs"]
