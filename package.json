@@ -31,7 +31,7 @@
     "@vueuse/core": "^10.5.0",
     "@vueuse/motion": "^2.0.0",
     "axios": "^1.6.0",
-    "firebase": "^10.3.1",
+    "firebase": "^10.5.2",
     "firebase-admin": "^11.11.0",
     "firebase-functions": "^4.4.1",
     "markdown-it": "^13.0.2",
@@ -45,10 +45,10 @@
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-vue": "^1.1.7",
     "md-editor-v3": "^4.8.2",
-    "nuxt-vuefire": "^0.2.19",
+    "nuxt-vuefire": "^0.4.0",
     "vue-clipboard3": "^2.0.0",
     "vue3-markdown-it": "^1.0.10",
-    "vuefire": "^3.1.16",
+    "vuefire": "^3.1.17",
     "vuetify": "3.3.15"
   }
 }
