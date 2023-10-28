@@ -22,7 +22,7 @@
             </v-row>
           </v-img>
           <v-card-text>
-            <v-row class="ma-2 pa-2">
+            <v-row class="ma-2 pa-lg-2 pa-sm-1">
               <v-col cols="12">
                 <div class="markdown-body nanumsquare-light text-lg-h6 text-md-body-1  pa-10" v-html="markdown.render(post.content)" style="line-height: 3;">
                 </div>
