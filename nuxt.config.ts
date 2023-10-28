@@ -40,10 +40,7 @@ export default defineNuxtConfig({
             selfGitHubUrl: process.env.SELF_GITHUB_URL,
         }
     },
-    nitro: {
-        // NOTE: we don't want to use the firebase preset because this is a static website and the firebase preset is for SSR
-        preset: 'node', // the default
-    },
+
     routeRules: {
         '/': { isr: true },
         '/write': { ssr: false },
