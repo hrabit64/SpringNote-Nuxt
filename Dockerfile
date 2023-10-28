@@ -18,7 +18,7 @@ RUN yarn nuxt build
 FROM node:18-alpine3.17
 # update and install latest dependencies, add dumb-init package
 # add a non root user
-RUN apk update && && adduser -D nuxtuser
+RUN apk update &&  adduser -D nuxtuser
 # set non root user
 USER nuxtuser
 
