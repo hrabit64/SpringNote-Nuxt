@@ -3,22 +3,18 @@
   <v-container class="h-100" v-motion-slide-left>
     <v-row class="mt-15">
       <v-spacer></v-spacer>
-      <v-col cols="10">
+      <v-col cols="12" lg="8">
         <v-card class="rounded-xl" width="100%">
-          <v-card-title class="my-10">
-            <p class="text-h3 text-center text-primary nanumsquare-bold">시리즈 | {{series.title}}</p>
-          </v-card-title>
+          <p class="my-5 text-lg-h3 text-sm-subtitle-1 text-center text-primary nanumsquare-bold">시리즈 | {{series.title}}</p>
           <v-divider></v-divider>
-          <v-card-subtitle class="my-10">
-            <p class="text-center text-subtitle-1 nanumsquare-bold">{{series.description}}</p>
-          </v-card-subtitle>
+          <p class="my-5 text-center text-lg-h6 text-sm-subtitle-1 nanumsquare-normal">{{series.description}}</p>
         </v-card>
       </v-col>
       <v-spacer></v-spacer>
     </v-row>
     <v-row>
       <v-spacer></v-spacer>
-      <v-col cols="10">
+      <v-col cols="12" lg="8">
         <client-only>
           <v-card class="rounded-lg elevation-3">
             <v-card-item>

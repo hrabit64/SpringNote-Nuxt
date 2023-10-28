@@ -3,14 +3,14 @@
   <v-container class="h-100" v-motion-slide-left>
     <v-row>
       <v-spacer></v-spacer>
-      <v-col cols="10">
+      <v-col cols="12" lg="8">
         <client-only>
 
           <v-card class="rounded-lg elevation-3 mt-10">
 
             <v-card-item>
               <v-row class="align-center justify-center mt-10">
-                <v-col lg="8" md="8" sm="12">
+                <v-col lg="10" md="8" sm="12">
                   <v-row v-if="!isLoading">
                     <v-col cols="12">
                       <v-infinite-scroll :items="posts" :onLoad="load">

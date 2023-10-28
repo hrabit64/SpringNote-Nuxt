@@ -2,7 +2,7 @@
   <v-container class="h-100" v-motion-slide-left>
     <v-row class="mt-15">
       <v-spacer></v-spacer>
-      <v-col cols="12"  class="mt-15 px-2" >
+      <v-col cols="12" lg="8"  class="mt-15 px-2" >
         <v-card class="rounded-xl">
           <v-img cover :src="post.thumbnail" max-height="300" class="rounded-xl">
             <v-row class="fill-height py-0 my-0 justify-center align-content-center">
@@ -24,7 +24,7 @@
           <v-card-text>
             <v-row class="ma-2 pa-lg-2 pa-sm-1">
               <v-col cols="12">
-                <div class="markdown-body nanumsquare-light text-lg-h6 text-md-body-1  pa-lg-10 pa-sm-2" v-html="markdown.render(post.content)" style="line-height: 3;">
+                <div class="markdown-body nanumsquare-light text-lg-h6 text-md-body-1 text-sm-body-2 pa-lg-10 pa-sm-2" v-html="markdown.render(post.content)" style="line-height: 3;">
                 </div>
               </v-col>
             </v-row>
